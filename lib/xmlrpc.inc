@@ -2113,17 +2113,17 @@ xmlrpc_encode_entitites($this->errstr, $GLOBALS['xmlrpc_internalencoding'], $cha
 		var $content_type = 'text/xml';
 
 		/**
-		* @param string $meth the name of the method to invoke
-		* @param array $pars array of parameters to be passed to the method (xmlrpcval objects)
-		*/
+		 * @param string    $meth the name of the method to invoke
+		 * @param array|int $pars array of parameters to be passed to the method (xmlrpcval objects)
+		 */
 		function xmlrpcmsg($meth, $pars=0)
 		{
 			$this->methodname=$meth;
 			if(is_array($pars) && count($pars)>0)
 			{
-				for($i=0; $i<count($pars); $i++)
+				foreach($pars as $key => $value)
 				{
-					$this->addParam($pars[$i]);
+					$this->addParam($pars[$key]);
 				}
 			}
 		}
